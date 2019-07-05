@@ -1,4 +1,4 @@
-package xy.core.bean;
+package xy.core.registry;
 
 import xy.core.map.BeanSingletonMap;
 

@@ -14,6 +14,16 @@ import xy.core.bean.BeanDefinition;
 
 public class xy {
 
+	public static interface AnnotationNonNull<T> {
+		void call(T t);
+	}
+
+	public static <T> void ifAnnotationNonNull(T t, AnnotationNonNull<T> callback) {
+		if (nonNull(t)) {
+			callback.call(t);
+		}
+	}
+
 	public static Optional<ClassLoader> classLoader(String... paths) {
 		try {
 			return Optional.of(TypeUtil.createClassLoader(paths));
@@ -71,5 +81,9 @@ public class xy {
 	public static String name(Class<?> clazz) {
 		String name = clazz.getSimpleName();
 		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
+	}
+
+	public static void throwRuntimeException(String msg) {
+		throw new RuntimeException(msg);
 	}
 }
