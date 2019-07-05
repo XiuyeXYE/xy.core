@@ -31,7 +31,7 @@ public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinit
 		List<String> names = this.cMap.get(bi.getClass());
 		if (xy.isNull(names)) {
 			names = xy.list();
-			this.cMap.put(bi.getClass(), names);
+			this.cMap.put(bi.getClazz(), names);
 		}
 		if (names.contains(name)) {
 			xy.throwRuntimeException("class => name: " + name + " already exists!");

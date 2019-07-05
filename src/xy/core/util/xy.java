@@ -80,7 +80,7 @@ public class xy {
 
 	public static String name(Class<?> clazz) {
 		String name = clazz.getSimpleName();
-		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
+		return Character.toLowerCase(name.charAt(0)) + name.substring(1);
 	}
 
 	public static void throwRuntimeException(String msg) {
