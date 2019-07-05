@@ -1,9 +1,6 @@
 package xy.core.annotaion.processor;
 
-import xy.core.bean.BeanDefinition;
-import xy.core.constant.BeanDefinitionScope;
 import xy.core.registry.BeanDefintionRegistry;
-import xy.core.registry.BeanSingletonRegistry;
 import xy.core.util.xy;
 
 public interface DefinitionProcessor {
@@ -18,7 +15,7 @@ public interface DefinitionProcessor {
 	
 	
 	default void checkExist(String name, BeanDefintionRegistry registry) {
-		if (xy.nonNull(registry.get(name))) {
+		if (xy.nonNull(registry.getDefinition(name))) {
 			throw new RuntimeException(name + " already exist!");
 		}
 	}

@@ -1,6 +1,22 @@
 package xy.core.factory;
 
+import xy.core.bean.BeanDefinition;
+import xy.core.registry.BeanDefintionRegistry;
+import xy.core.registry.BeanSingletonRegistry;
+
 public interface BeanFactory {
+
+	BeanDefinition getBeanDefinition(String name);
+
+	BeanDefinition getBeanDefinition(Class<?> clazz);
+
+	BeanDefintionRegistry getDefRegistry();
+
+	void setDefRegistry(BeanDefintionRegistry registry);
+
+	BeanSingletonRegistry getInstRegistry();
+
+	void setInstRegistry(BeanSingletonRegistry registry);
 
 	<T> T getBean(Class<T> clazz);
 
@@ -14,7 +30,7 @@ public interface BeanFactory {
 
 	<T> T getBean(String name, Class<T> clazz, Object... params);
 
-	//force new bean
+	// force new bean
 	<T> T getNewBean(Class<T> clazz);
 
 	<T> T getNewBean(String name);

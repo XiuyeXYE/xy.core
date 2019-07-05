@@ -3,9 +3,8 @@ package xy.core.annotaion.processor.impl;
 import java.lang.reflect.Constructor;
 import java.util.List;
 
-
-import xy.core.annotaion.Configuration;
-import xy.core.annotaion.processor.DefinitionProcessor;
+import xy.core.annotaion.Module;
+import xy.core.annotaion.processor.AbstractMDefinitionProcessor;
 import xy.core.bean.BeanDefinition;
 import xy.core.bean.MethodDef;
 import xy.core.bean.ParamterTypes;
@@ -16,36 +15,13 @@ import xy.core.constant.InstType;
 import xy.core.constant.MethodName;
 import xy.core.registry.BeanDefintionRegistry;
 import xy.core.util.xy;
-import xy.core.annotaion.Scope;
 
-public class ConfigurationProcessor implements DefinitionProcessor {
+public class ModuleDefProcessor extends AbstractMDefinitionProcessor {
 
-	private void processScope(Class<?> clazz, BeanDefinition bd) {
-		Scope scope = clazz.getAnnotation(Scope.class);
-		xy.ifAnnotationNonNull(scope, s->{
-			bd.setScope(s.value());
-		});		
-	}
-	
-	private void processBean(Class<?> clazz, BeanDefintionRegistry registry) {
-		
-	}
-	
-	private void processModuleScan(Class<?> clazz,BeanDefintionRegistry registry) {
-		
-		
-		
-	}
-	
-	
 	@Override
 	public void process(Class<?> clazz, BeanDefintionRegistry registry) {
 
-		Configuration config = clazz.getAnnotation(Configuration.class);
-
-		if (xy.nonNull(config)) {
-
-			
+		xy.ifAnnotationNonNull(clazz.getAnnotation(Module.class), module -> {
 
 			Constructor<?>[] cons = clazz.getDeclaredConstructors();
 //			if (cons.length == 0) {
@@ -77,23 +53,18 @@ public class ConfigurationProcessor implements DefinitionProcessor {
 			}
 
 			bd.setMethod(mds);
-			
-			String name = config.value();
-			
-			if(xy.isNull(name)||name.isEmpty())name = xy.name(clazz);
-			
+
+			String name = module.value();
+
+			if (xy.isNull(name) || name.isEmpty())
+				name = xy.name(clazz);
+
 			registry.registerBeanDefinition(name, bd);
 
 			this.processScope(clazz, bd);
-			
-			this.processBean(clazz,registry);
-			
-			this.processModuleScan(clazz,registry);
-			
-		}
 
+			this.processBean(clazz, registry);
+		});
 	}
-
-	
 
 }

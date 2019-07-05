@@ -5,14 +5,14 @@ import java.util.Map;
 
 import xy.core.util.xy;
 
-public class AliasesMap {
+public class AliasMap {
 
 	// name => aliases
 	private Map<String, List<String>> name_aliases;
 	// alias => name
 	private Map<String, String> alias_name;
 
-	public AliasesMap() {
+	public AliasMap() {
 		this.name_aliases = xy.map();
 		this.alias_name = xy.map();
 	}
@@ -36,6 +36,11 @@ public class AliasesMap {
 			this.name_aliases.put(name, aliases);
 		}
 		aliases.add(alias);
+	}
+
+	@Override
+	public String toString() {
+		return "AliasMap [name_aliases=" + name_aliases + ", alias_name=" + alias_name + "]";
 	}
 
 }
