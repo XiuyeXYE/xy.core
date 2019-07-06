@@ -32,11 +32,11 @@ public class ParamterTypes {
 	public int size() {
 		return this.types.size();
 	}
-	
+
 	public boolean isEmpty() {
 		return this.types.isEmpty();
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ParamterTypes [types=" + types + "]";

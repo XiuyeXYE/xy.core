@@ -1,21 +1,27 @@
 package xy.core.bean;
 
 import java.util.List;
+import java.util.Map;
 
 import xy.core.constant.BeanDefinitionScope;
 import xy.core.constant.BeanDefinitionStatus;
 
-
+/**
+ * bean definition
+ * 
+ * @author admin
+ *
+ */
 public class BeanDefinition {
 
 	protected Class<?> clazz;
-	
+
 	protected String parentName;
-	
-	protected List<MethodDef> method;
-	
+
+	protected Map<String, MethodDef> method;
+
 	protected List<String> dependsOn;
-	
+
 	// module/bean name or classname or method name
 	protected String beanId;
 
@@ -24,71 +30,93 @@ public class BeanDefinition {
 
 	// define ,instantiated
 	protected BeanDefinitionStatus status;
+
 	// prototype or singleton
 	protected BeanDefinitionScope scope;
+
 	// instantiate : new or factory method
 	// new or method name
 	protected String instType;
+
 	public Class<?> getClazz() {
 		return clazz;
 	}
+
 	public void setClazz(Class<?> clazz) {
 		this.clazz = clazz;
 	}
+
 	public String getParentName() {
 		return parentName;
 	}
+
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}
-	public List<MethodDef> getMethod() {
+
+	public Map<String, MethodDef> getMethod() {
 		return method;
 	}
-	public void setMethod(List<MethodDef> method) {
+
+	public void setMethod(Map<String, MethodDef> method) {
 		this.method = method;
 	}
+
 	public List<String> getDependsOn() {
 		return dependsOn;
 	}
+
 	public void setDependsOn(List<String> dependsOn) {
 		this.dependsOn = dependsOn;
 	}
+
 	public String getBeanId() {
 		return beanId;
 	}
+
 	public void setBeanId(String beanId) {
 		this.beanId = beanId;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public BeanDefinitionStatus getStatus() {
 		return status;
 	}
+
 	public void setStatus(BeanDefinitionStatus status) {
 		this.status = status;
 	}
+
 	public BeanDefinitionScope getScope() {
 		return scope;
 	}
+
 	public void setScope(BeanDefinitionScope scope) {
 		this.scope = scope;
 	}
+
 	public String getInstType() {
 		return instType;
 	}
+
 	public void setInstType(String instType) {
 		this.instType = instType;
 	}
+
 	@Override
 	public String toString() {
 		return "BeanDefinition [clazz=" + clazz + ", parentName=" + parentName + ", method=" + method + ", dependsOn="
 				+ dependsOn + ", beanId=" + beanId + ", type=" + type + ", status=" + status + ", scope=" + scope
 				+ ", instType=" + instType + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,6 +132,7 @@ public class BeanDefinition {
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -155,7 +184,4 @@ public class BeanDefinition {
 		return true;
 	}
 
-
-	
-	
 }

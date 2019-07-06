@@ -8,7 +8,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
-@Target({METHOD,CONSTRUCTOR})
+@Target({ METHOD, CONSTRUCTOR })
 public @interface Bean {
-	String []value() default "";
+	String[] value() default "";
 }

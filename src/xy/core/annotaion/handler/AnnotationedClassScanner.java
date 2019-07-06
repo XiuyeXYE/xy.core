@@ -11,7 +11,7 @@ import com.xiuye.util.cls.TypeUtil;
 
 import xy.core.bean.handler.ClassScanner;
 
-public class AnnotationedClassScanner implements ClassScanner{
+public class AnnotationedClassScanner implements ClassScanner {
 
 	private List<String> packages;
 
@@ -33,6 +33,7 @@ public class AnnotationedClassScanner implements ClassScanner{
 
 	/**
 	 * not contains sub dirs
+	 * 
 	 * @return
 	 */
 	@Override

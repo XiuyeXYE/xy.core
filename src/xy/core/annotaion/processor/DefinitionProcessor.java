@@ -7,13 +7,12 @@ public interface DefinitionProcessor {
 
 	/**
 	 * handle bean definition and registor
-	 * 		@param clazz
-	 * 		@param registry
+	 * 
+	 * @param clazz
+	 * @param registry
 	 */
-	void process(Class<?> clazz,BeanDefintionRegistry registry);
-	
-	
-	
+	void process(Class<?> clazz, BeanDefintionRegistry registry);
+
 	default void checkExist(String name, BeanDefintionRegistry registry) {
 		if (xy.nonNull(registry.getDefinition(name))) {
 			throw new RuntimeException(name + " already exist!");
@@ -28,7 +27,5 @@ public interface DefinitionProcessor {
 		}
 		return pType;
 	}
-
-	
 
 }

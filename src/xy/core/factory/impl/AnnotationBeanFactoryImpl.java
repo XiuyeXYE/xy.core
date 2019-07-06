@@ -7,7 +7,7 @@ import xy.core.factory.AnnotationBeanFactory;
 import xy.core.registry.BeanDefintionRegistry;
 import xy.core.registry.BeanSingletonRegistry;
 
-public class AnnotationBeanFactoryImpl implements AnnotationBeanFactory{
+public class AnnotationBeanFactoryImpl implements AnnotationBeanFactory {
 
 	@Override
 	public <T> T getBean(Class<T> clazz) {
@@ -90,7 +90,7 @@ public class AnnotationBeanFactoryImpl implements AnnotationBeanFactory{
 	@Override
 	public void setDefRegistry(BeanDefintionRegistry registry) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -102,7 +102,7 @@ public class AnnotationBeanFactoryImpl implements AnnotationBeanFactory{
 	@Override
 	public void setInstRegistry(BeanSingletonRegistry registry) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

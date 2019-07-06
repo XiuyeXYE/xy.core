@@ -79,5 +79,4 @@ public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinit
 		return "BeanDefintionRegistry [biMap=" + biMap + ", aMap=" + aMap + ", cMap=" + cMap + "]";
 	}
 
-	
 }

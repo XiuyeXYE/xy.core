@@ -18,5 +18,5 @@ import java.lang.annotation.Target;
 public @interface Module {
 
 	String value() default "";
-	
+
 }

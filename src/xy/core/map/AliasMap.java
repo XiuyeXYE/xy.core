@@ -17,14 +17,14 @@ public class AliasMap {
 		this.alias_name = xy.map();
 	}
 
-	public List<String> getAliases(String name){
+	public List<String> getAliases(String name) {
 		return this.name_aliases.get(name);
 	}
-	
+
 	public String getName(String alias) {
 		return this.alias_name.get(alias);
 	}
-	
+
 	public void put(String name, String alias) {
 
 		if (xy.nonNull(this.alias_name.putIfAbsent(alias, name))) {

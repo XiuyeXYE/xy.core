@@ -8,10 +8,10 @@ public interface InstanceProcessor {
 
 	/**
 	 * singleton
-	 * 		@param name
-	 * 		@param registry
-	 */	
-	void process(BeanDefinition bi,BeanDefintionRegistry defRegistry,BeanSingletonRegistry instRegistry);
-	
-	
+	 * 
+	 * @param name
+	 * @param registry
+	 */
+	void process(BeanDefinition bi, BeanDefintionRegistry defRegistry, BeanSingletonRegistry instRegistry);
+
 }

@@ -1,7 +1,7 @@
 package xy.core.annotaion.processor.impl;
 
 import java.lang.reflect.Method;
-import java.util.List;
+import java.util.Map;
 
 import xy.core.annotaion.Bean;
 import xy.core.annotaion.processor.AbstractDefinitionProcessor;
@@ -35,7 +35,7 @@ public class BeanDefProcessor extends AbstractDefinitionProcessor {
 				bd.setType(BeanType.B);
 				bd.setScope(BeanDefinitionScope.SINGLETON);
 
-				List<MethodDef> mds = xy.list();
+				Map<String, MethodDef> mds = xy.map();
 
 				MethodDef md = new MethodDef();
 				int pCount = m.getParameterCount();
@@ -45,7 +45,7 @@ public class BeanDefProcessor extends AbstractDefinitionProcessor {
 					ParamterTypes pt = new ParamterTypes(types);
 					md.setParamTypes(pt);
 				}
-				mds.add(md);
+				mds.put(md.mId(), md);
 
 				bd.setMethod(mds);
 
@@ -56,7 +56,7 @@ public class BeanDefProcessor extends AbstractDefinitionProcessor {
 					name = xy.name(retType);
 
 				registry.registerBeanDefinition(name, bd);
-				
+
 				for (String alias : aliases) {
 					if (!name.equals(alias) && !alias.isEmpty())
 						registry.registerAlias(name, alias);

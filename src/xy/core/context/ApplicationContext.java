@@ -4,5 +4,4 @@ import xy.core.factory.BeanFactory;
 
 public interface ApplicationContext extends BeanFactory {
 
-
 }

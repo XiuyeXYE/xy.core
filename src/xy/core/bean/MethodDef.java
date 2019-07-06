@@ -36,4 +36,8 @@ public class MethodDef {
 				+ "]";
 	}
 
+	public String mId() {
+		return this.methodName + "|" + this.paramTypes;
+	}
+
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import xy.core.bean.BeanDefinition;
 
-public class BeanDefinitionMap extends HashMap<String, BeanDefinition>{
+public class BeanDefinitionMap extends HashMap<String, BeanDefinition> {
 
 	/**
 	 * 
@@ -13,9 +13,8 @@ public class BeanDefinitionMap extends HashMap<String, BeanDefinition>{
 
 	@Override
 	public BeanDefinition put(String key, BeanDefinition value) {
-		
+
 		return super.put(key, value);
 	}
-	
 
 }

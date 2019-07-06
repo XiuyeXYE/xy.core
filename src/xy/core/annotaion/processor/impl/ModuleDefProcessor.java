@@ -1,7 +1,7 @@
 package xy.core.annotaion.processor.impl;
 
 import java.lang.reflect.Constructor;
-import java.util.List;
+import java.util.Map;
 
 import xy.core.annotaion.Module;
 import xy.core.annotaion.processor.AbstractMDefinitionProcessor;
@@ -36,7 +36,7 @@ public class ModuleDefProcessor extends AbstractMDefinitionProcessor {
 			bd.setType(BeanType.M);
 			bd.setScope(BeanDefinitionScope.SINGLETON);
 
-			List<MethodDef> mds = xy.list();
+			Map<String, MethodDef> mds = xy.map();
 
 			for (Constructor<?> con : cons) {
 				MethodDef md = new MethodDef();
@@ -49,7 +49,7 @@ public class ModuleDefProcessor extends AbstractMDefinitionProcessor {
 					ParamterTypes pt = new ParamterTypes(types);
 					md.setParamTypes(pt);
 				}
-				mds.add(md);
+				mds.put(md.mId(), md);
 			}
 
 			bd.setMethod(mds);
