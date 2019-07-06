@@ -53,7 +53,7 @@ public class ConfigurationDefProcessor extends AbstractMDefinitionProcessor {
 //			}
 
 			BeanDefinition bd = new BeanDefinition();
-			bd.setBeanId(xy.uuid());
+//			bd.setBeanId(xy.uuid());
 			bd.setClazz(clazz);
 			bd.setInstType(InstType.NEW);
 			bd.setStatus(BeanDefinitionStatus.READY);
@@ -82,7 +82,7 @@ public class ConfigurationDefProcessor extends AbstractMDefinitionProcessor {
 
 			if (xy.isNull(name) || name.isEmpty())
 				name = xy.name(clazz);
-
+			bd.setBeanId(name);
 			registry.registerBeanDefinition(name, bd);
 
 			this.processScope(clazz, bd);

@@ -108,6 +108,9 @@ public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinit
 		return this.scList.scanned(clazz);
 	}
 
+	public List<String> getNames(Class<?> clazz) {
+		return this.cMap.get(clazz);
+	}
 
 	@Override
 	public String toString() {

@@ -4,14 +4,14 @@ import xy.core.bean.BeanDefinition;
 import xy.core.registry.BeanDefintionRegistry;
 import xy.core.registry.BeanSingletonRegistry;
 
-public interface InstanceProcessor {
+public interface ProtoProcessor {
 
 	/**
-	 * singleton
+	 * prototype
 	 * 
 	 * @param name
 	 * @param registry
 	 */
-	void process(String name, BeanDefinition bi, BeanDefintionRegistry defRegistry, BeanSingletonRegistry instRegistry);
-
+	Object process(String name, BeanDefinition bi, BeanDefintionRegistry defRegistry, BeanSingletonRegistry instRegistry);
+	
 }

@@ -33,8 +33,12 @@ public class Test2 {
 		}
 		private void g() {}
 	}
+	
+	static class C{
+		private C() {}
+	}
 
-	public static void main(String[] args) throws NoSuchMethodException, SecurityException {
+	public static void main(String[] args) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException {
 
 		// return inherited annotation
 		LogUtil.log(B.class.getAnnotation(W.class));
@@ -48,7 +52,7 @@ public class Test2 {
 		LogUtil.log(w.annotationType());
 
 		LogUtil.log(B.class.isAnnotationPresent(W.class));
-		
+		LogUtil.log(C.class.newInstance());
 	}
 
 }

@@ -7,6 +7,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 import com.xiuye.util.cls.TypeUtil;
 
@@ -22,6 +26,17 @@ public class xy {
 		if (nonNull(t)) {
 			callback.call(t);
 		}
+	}
+
+	public static <T> void ifNonNull(T t, Consumer<T> cons) {
+		if (nonNull(t))
+			cons.accept(t);
+	}
+	
+	public static <R,T> R ifNonNull(T t,Function<T,R> func) {
+		if(nonNull(t))
+			return func.apply(t);
+		return null;
 	}
 
 	public static Optional<ClassLoader> classLoader(String... paths) {
@@ -83,7 +98,14 @@ public class xy {
 		return Character.toLowerCase(name.charAt(0)) + name.substring(1);
 	}
 
-	public static void throwRuntimeException(String msg) {
+	public static <T> T throwRuntimeException(String msg) {
 		throw new RuntimeException(msg);
+	}
+
+	public static<T> T ifNull(T obj, Supplier<T> func) {
+		if(isNull(obj)) {
+			return func.get();
+		}
+		return obj;
 	}
 }

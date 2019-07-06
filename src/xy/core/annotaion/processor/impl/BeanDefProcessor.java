@@ -28,7 +28,7 @@ public class BeanDefProcessor extends AbstractDefinitionProcessor {
 				Class<?> retType = m.getReturnType();
 
 				BeanDefinition bd = new BeanDefinition();
-				bd.setBeanId(xy.uuid());
+//				bd.setBeanId(xy.uuid());
 				bd.setParentName(xy.name(clazz));
 				bd.setClazz(retType);
 				bd.setInstType(InstType.PARENT_METHOD);
@@ -55,7 +55,7 @@ public class BeanDefProcessor extends AbstractDefinitionProcessor {
 				String name = aliases[0];
 				if (name.isEmpty())
 					name = xy.name(retType);
-
+				bd.setBeanId(name);
 				registry.registerBeanDefinition(name, bd);
 
 				for (String alias : aliases) {
