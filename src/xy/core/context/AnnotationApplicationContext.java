@@ -127,4 +127,14 @@ public class AnnotationApplicationContext implements AnnotationBeanFactory, Appl
 		return this.classes;
 	}
 
+	@Override
+	public List<String> getAliases(String name) {
+		return this.defReistry.getAlias(name);
+	}
+
+	@Override
+	public BeanDefinition getBeanDefinition(Class<?> clazz, String name) {
+		return this.defReistry.getDefinition(clazz, name);
+	}
+
 }

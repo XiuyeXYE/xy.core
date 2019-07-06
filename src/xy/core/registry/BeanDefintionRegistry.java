@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import xy.core.bean.BeanDefinition;
+import xy.core.list.ScannedClasses;
 import xy.core.map.AliasMap;
 import xy.core.map.BeanDefinitionMap;
 import xy.core.map.ClassMap;
 import xy.core.util.xy;
 
 public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinition>> {
+
+	// scanned classes to save
+	private ScannedClasses scList = new ScannedClasses();
 
 	// name => definition
 	private BeanDefinitionMap biMap = new BeanDefinitionMap();
@@ -28,7 +32,7 @@ public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinit
 		}
 		this.biMap.put(name, bi);
 
-		List<String> names = this.cMap.get(bi.getClass());
+		List<String> names = this.cMap.get(bi.getClazz());
 		if (xy.isNull(names)) {
 			names = xy.list();
 			this.cMap.put(bi.getClazz(), names);
@@ -37,10 +41,15 @@ public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinit
 			xy.throwRuntimeException("class => name: " + name + " already exists!");
 		}
 		names.add(name);
+		this.scList.add(bi.getClazz());
 	}
 
 	public BeanDefinition getDefinition(String name) {
-		return this.biMap.get(name);
+		BeanDefinition bi = this.biMap.get(name);
+		if (xy.isNull(bi)) {
+			bi = this.biMap.get(this.aMap.getName(name));
+		}
+		return bi;
 	}
 
 	public BeanDefinition getDefinition(Class<?> clazz) {
@@ -55,6 +64,23 @@ public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinit
 			xy.throwRuntimeException(clazz + "'s names are more than one!");
 		}
 		return this.biMap.get(names.get(0));
+	}
+
+	public BeanDefinition getDefinition(Class<?> clazz, String name/* alias OK */) {
+		List<String> names = this.cMap.get(clazz);
+		if (xy.isNull(names)) {
+			xy.throwRuntimeException(clazz + " is not managed!");
+		}
+		if (names.isEmpty()) {
+			xy.throwRuntimeException(clazz + " has no names!");
+		}
+		if (!names.contains(name)) {
+			name = this.aMap.getName(name);
+		}
+		if (!names.contains(name)) {
+			xy.throwRuntimeException(clazz + " has no this name!");
+		}
+		return this.getDefinition(name);
 	}
 
 	@Override
@@ -73,6 +99,15 @@ public class BeanDefintionRegistry implements Iterable<Entry<String, BeanDefinit
 	public String getName(String alias) {
 		return this.aMap.getName(alias);
 	}
+
+	public List<Class<?>> getAllScannedClasses() {
+		return this.scList.list();
+	}
+
+	public boolean scanned(Class<?> clazz) {
+		return this.scList.scanned(clazz);
+	}
+
 
 	@Override
 	public String toString() {

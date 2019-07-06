@@ -1,5 +1,7 @@
 package xy.core.factory;
 
+import java.util.List;
+
 import xy.core.bean.BeanDefinition;
 import xy.core.registry.BeanDefintionRegistry;
 import xy.core.registry.BeanSingletonRegistry;
@@ -9,6 +11,8 @@ public interface BeanFactory {
 	BeanDefinition getBeanDefinition(String name);
 
 	BeanDefinition getBeanDefinition(Class<?> clazz);
+	
+	BeanDefinition getBeanDefinition(Class<?> clazz,String name);
 
 	BeanDefintionRegistry getDefRegistry();
 
@@ -17,7 +21,11 @@ public interface BeanFactory {
 	BeanSingletonRegistry getInstRegistry();
 
 	void setInstRegistry(BeanSingletonRegistry registry);
+	
+	List<String> getAliases(String name);
 
+	
+	
 	<T> T getBean(Class<T> clazz);
 
 	<T> T getBean(String name);

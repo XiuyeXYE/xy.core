@@ -20,7 +20,8 @@ public class ModuleDefProcessor extends AbstractMDefinitionProcessor {
 
 	@Override
 	public void process(Class<?> clazz, BeanDefintionRegistry registry) {
-
+		if (this.processedModule(clazz, registry))
+			return;
 		xy.ifAnnotationNonNull(clazz.getAnnotation(Module.class), module -> {
 
 			Constructor<?>[] cons = clazz.getDeclaredConstructors();

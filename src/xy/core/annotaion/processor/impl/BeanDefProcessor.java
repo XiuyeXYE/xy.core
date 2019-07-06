@@ -1,6 +1,7 @@
 package xy.core.annotaion.processor.impl;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Map;
 
 import xy.core.annotaion.Bean;
@@ -34,7 +35,7 @@ public class BeanDefProcessor extends AbstractDefinitionProcessor {
 				bd.setStatus(BeanDefinitionStatus.READY);
 				bd.setType(BeanType.B);
 				bd.setScope(BeanDefinitionScope.SINGLETON);
-
+				bd.setDependsOn(Arrays.asList(bd.getParentName()));
 				Map<String, MethodDef> mds = xy.map();
 
 				MethodDef md = new MethodDef();

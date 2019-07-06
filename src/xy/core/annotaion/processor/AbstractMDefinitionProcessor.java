@@ -11,4 +11,7 @@ public abstract class AbstractMDefinitionProcessor extends AbstractDefinitionPro
 		this.beanAnProcessor.process(clazz, registry);
 	}
 
+	protected boolean processedModule(Class<?> clazz, BeanDefintionRegistry registry) {
+		return registry.scanned(clazz);
+	}
 }

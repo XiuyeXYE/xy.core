@@ -28,7 +28,7 @@ public class AliasMap {
 	public void put(String name, String alias) {
 
 		if (xy.nonNull(this.alias_name.putIfAbsent(alias, name))) {
-			throw new RuntimeException("Bean alias name is override!");
+			throw new RuntimeException("Bean alias name: " + alias + " is already exist!");
 		}
 		List<String> aliases = this.name_aliases.get(name);
 		if (xy.isNull(aliases)) {

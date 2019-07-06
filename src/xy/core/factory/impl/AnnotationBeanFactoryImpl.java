@@ -105,4 +105,16 @@ public class AnnotationBeanFactoryImpl implements AnnotationBeanFactory {
 
 	}
 
+	@Override
+	public List<String> getAliases(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BeanDefinition getBeanDefinition(Class<?> clazz, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
